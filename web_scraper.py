@@ -4,19 +4,16 @@ import re
 
 
 class WebScraper:
-    url = "http://pokemondb.net/pokedex/"
-    gen = 1
-    type = "Fire"
 
-    def __init__(self, url="http://pokemondb.net/pokedex/", gen=1, p_type="Fire"):
-        self.url = url
+    def __init__(self, the_url="http://pokemondb.net/pokedex/", gen=1, p_type="Fire"):
+        self.url = the_url
         self.gen = gen
         self.type = p_type
 
     def list_gen(self,):
         r = requests.get(self.url + "national").text
         soup = BeautifulSoup(r, "html.parser")
-        container = soup.find('div', attrs={'class': 'infocard-tall-list'})
+        container = soup.find('div', attrs ={'class': 'infocard-tall-list'})
         cards = container.find_all('span')
         pokemon_list = []
         for card in cards:
@@ -37,9 +34,7 @@ class WebScraper:
         soup = BeautifulSoup(r, "html.parser")
         desc = soup.find('div', attrs={'class': 'col desk-span-8 lap-span-6'})
         table = soup.find('div', attrs={'class': 'tabset-basics'})
-        img = table.find('img')
-        img = img['src']
-        print(img)
+        img = table.find('img')['src']
         container = table.find('div', attrs={'class': 'col desk-span-4 lap-span-6'})
         basic_data = container.find('table', attrs={'class': 'vitals-table'})
         rows = basic_data.find_all('tr')
@@ -52,4 +47,10 @@ class WebScraper:
                 height = float(row.find('td').text[row.find('td').text.index('(')+1:row.find('td').text.index(')')-1])
             elif re.search('Weight', row.text):
                 weight = float(row.find('td').text[row.find('td').text.index('(')+1:row.find('td').text.index(')')-3])
-        return {"name": pokemon, "image": img, "number": number, "type": pokemon_type, "height": height, "weight": weight}
+        return {"name": pokemon,
+                "image": img,
+                "number": number,
+                "type": pokemon_type,
+                "desc": desc,
+                "height": height,
+                "weight": weight}
