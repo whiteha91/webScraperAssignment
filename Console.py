@@ -11,9 +11,9 @@ class Console (Cmd):
     prompt = "(-o-)"
     intro = ""
 
-    def do_get_data(self, line, url, gen, type):
-        controller = Controller()
-        controller.get(url, gen, type)
+    def do_get_data(self, line, url="http://pokemondb.net/pokedex/", gen=1, p_type="Fire"):
+        controller = Controller.Controller()
+        controller.get(url, gen, p_type)
 
     def do_sort_weight(self, line):
         pass

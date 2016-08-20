@@ -7,8 +7,8 @@ from webScraperAssignment import Pokemon
 
 class Controller:
 
-    def get(self, url="http://pokemondb.net/pokedex/", gen=1, p_type="Fire"):
-        my_web = web_scraper.WebScraper(url, gen, type)
+    def get(self, url, gen, p_type):
+        my_web = web_scraper.WebScraper(url, gen, p_type)
         list = my_web.list_gen()
         for species in list:
             pokemon = my_web.info_grab(species)

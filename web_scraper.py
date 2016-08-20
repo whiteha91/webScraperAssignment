@@ -5,7 +5,7 @@ import re
 
 class WebScraper:
 
-    def __init__(self, the_url="http://pokemondb.net/pokedex/", gen=1, p_type="Fire"):
+    def __init__(self, the_url, gen, p_type):
         self.url = the_url
         self.gen = gen
         self.type = p_type
