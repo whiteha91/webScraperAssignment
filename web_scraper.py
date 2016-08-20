@@ -19,9 +19,9 @@ class WebScraper:
         for card in cards:
             gen = card.find('a')
             type_info = card.find('small', attrs={'class': 'aside'}).text
-            # print(type_info)
+            # print(type_info + ' ' + self.type)
             # print(gen)
-            if re.search('G' + str(gen), gen['data-sprite']) and re.search(self.type, type_info):
+            if re.search('G' + str(self.gen), gen['data-sprite']) and re.search(self.type, type_info):
                 pokemon_list.append(card.find('a', attrs={'class': 'ent-name'}).text)
                 # print(card.find('a', attrs={'class': 'ent-name'}))
             # pokemon_list = card.find_all('a', attrs={'class': 'ent-name'})
@@ -32,7 +32,7 @@ class WebScraper:
     def info_grab(self, pokemon,):
         r = requests.get(self.url + pokemon).text
         soup = BeautifulSoup(r, "html.parser")
-        desc = soup.find('div', attrs={'class': 'col desk-span-8 lap-span-6'})
+        desc = soup.find('div', attrs={'class': 'col desk-span-8 lap-span-6'}).text
         table = soup.find('div', attrs={'class': 'tabset-basics'})
         img = table.find('img')['src']
         container = table.find('div', attrs={'class': 'col desk-span-4 lap-span-6'})

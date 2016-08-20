@@ -27,7 +27,7 @@ class Pokemon:
         return self._type
 
     def get_desc(self):
-        return self.desc
+        return self._desc
 
     def get_height(self):
         return self._height
