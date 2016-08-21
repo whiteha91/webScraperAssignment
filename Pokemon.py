@@ -8,14 +8,15 @@ class Pokemon:
         This class is holding the information about each species
     """
 
-    def __init__(self, index, image, name, type, desc, height, weight):
+    def __init__(self, index, image, name, type, desc, height, weight, date_added):
         self._index = index
         self._image = image
-        self._name = name
+        self.name = name
         self._type = type
         self._desc = desc
         self._height = height
         self._weight = weight
+        self._date_added = date_added
 
     def get_type(self):
         return self._index
@@ -34,3 +35,6 @@ class Pokemon:
 
     def get_weight(self):
         return self._weight
+
+    def get_date_added(self):
+        return self._date_added

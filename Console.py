@@ -2,21 +2,21 @@
 
 """
 from cmd import Cmd
-from webScraperAssignment import Controller
 
 
 class Console (Cmd):
     """
     this is the user interface
     """
-    prompt = "(-o-)"
+    prompt = ""
     intro = """"""
-    controller = None
+    my_controller = None
 
-    def preloop(self):
-        """Hook method executed once when the cmdloop() method is called."""
-        self.controller = Controller.Controller()
-        pass
+    def __init__(self, the_prompt, the_intro, the_controller):
+        super(Console, self).__init__()
+        self.prompt = the_prompt
+        self.intro = the_intro
+        self.my_controller = the_controller
 
     def do_scrape(self, line, url="http://pokemondb.net/pokedex/", gen=1, p_type="Fire"):
         """
@@ -24,11 +24,11 @@ class Console (Cmd):
                     it blank to pass in the default)
         :param gen: this is the generation that you wish to search through (leave it blank to pass in the default)
         :param p_type: this is the type of pokemon to search
-                options are Normal, Fire, Fighting, Water ,Flying, Grass, Poison, Electric, Ground, Psychic, Rock, Ice,
-                 Bug, Dragon, Ghost. (leave it blank to pass in the default)
+                       options are Normal, Fire, Fighting, Water ,Flying, Grass, Poison, Electric, Ground, Psychic, Rock, Ice,
+                       Bug, Dragon, Ghost. (leave it blank to pass in the default)
         :return:
         """
-        self.controller.get_from_web(url, gen, p_type)
+        self.my_controller.get_from_web(url, gen, p_type)
 
     def do_read_file(self):
         pass
@@ -40,7 +40,8 @@ class Console (Cmd):
         pass
 
     def do_get_desc(self, name):
-        self.controller.data(name)
+        self.my_controller.data(name)
+
 
     def default(self, line):
         """Called on an input line when the command prefix is not recognized.
@@ -50,5 +51,4 @@ class Console (Cmd):
 
         """
         self.stdout.write('(╯°□°）╯︵ ┻━┻ Unknown syntax: %s\n'%line)
-if __name__ == '__main__':
-    Console().cmdloop()
+
