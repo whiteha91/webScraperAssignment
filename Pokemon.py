@@ -1,7 +1,6 @@
 """
-    Created by Angus Whitehead
+@author: Angus Whitehead
 """
-
 
 class Pokemon:
     """

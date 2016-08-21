@@ -1,6 +1,7 @@
 """
-
+@author: Angus Whitehead
 """
+
 from cmd import Cmd
 
 
@@ -24,24 +25,34 @@ class Console (Cmd):
                     it blank to pass in the default)
         :param gen: this is the generation that you wish to search through (leave it blank to pass in the default)
         :param p_type: this is the type of pokemon to search
-                       options are Normal, Fire, Fighting, Water ,Flying, Grass, Poison, Electric, Ground, Psychic, Rock, Ice,
-                       Bug, Dragon, Ghost. (leave it blank to pass in the default)
-        :return:
+                       options are Normal, Fire, Fighting, Water ,Flying, Grass, Poison, Electric, Ground, Psychic, Rock
+                       , Ice, Bug, Dragon, Ghost. (leave it blank to pass in the default)
         """
         self.my_controller.get_from_web(url, gen, p_type)
 
-    def do_read_file(self):
-        pass
+    def do_save(self, name):
+        """
+        this function saves the instance of the pokemon class
+        :param name: this is the name of the pokemon whose instance you wish to save
+        """
+        self.my_controller.save_data(name)
+
+    def do_load(self):
+        """
+        this
+        :return:
+        """
+        try:
+            self.my_controller.get_from_save()
+        except IOError:
+            print("pokemon not in database")
 
     def do_sort_weight(self, line):
+
         pass
 
     def do_sort_height(self, line):
         pass
-
-    def do_get_desc(self, name):
-        self.my_controller.data(name)
-
 
     def default(self, line):
         """Called on an input line when the command prefix is not recognized.

@@ -1,7 +1,5 @@
-"""
 
-"""
-from webScraperAssignment import web_scraper
+from webScraperAssignment import WebScraper
 from webScraperAssignment import Pokemon
 from datetime import datetime
 from webScraperAssignment import Console
@@ -19,14 +17,15 @@ class Controller:
         self.my_console.cmdloop()
 
     def get_from_web(self, url, gen, p_type):
-        my_web = web_scraper.WebScraper(url, gen, p_type)
+        my_web = WebScraper.WebScraper(url, gen, p_type)
         list = my_web.list_gen()
         for species in list:
             pokemon = my_web.info_grab(species)
             self.create_pokemon(species, pokemon)
             print(species + " added")
 
-    def save_data(self, pokemon):
+    def save_data(self, name):
+        pokemon = self.pokedex[name]
         self.my_file_handler.save(pokemon)
 
     def get_from_save(self):

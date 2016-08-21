@@ -1,6 +1,7 @@
 """
-
+@author: Angus Whitehead
 """
+
 from webScraperAssignment import Controller
 
 

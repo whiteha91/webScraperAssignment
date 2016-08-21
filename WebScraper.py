@@ -1,3 +1,7 @@
+"""
+@author: Angus Whitehead
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -19,7 +23,6 @@ class WebScraper:
         for card in cards:
             gen = card.find('a')
             type_info = card.find('small', attrs={'class': 'aside'}).text
-            print(str(type(type_info)))
             # print(type_info + ' ' + self.type)
             # print(gen)
             if re.search('G' + str(self.gen), gen['data-sprite']) and re.search(self.type, type_info):
