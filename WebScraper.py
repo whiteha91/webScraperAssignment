@@ -17,7 +17,7 @@ class WebScraper:
     def list_gen(self,):
         r = requests.get(self.url + "national").text
         soup = BeautifulSoup(r, "html.parser")
-        container = soup.find('div', attrs ={'class': 'infocard-tall-list'})
+        container = soup.find('div', attrs={'class': 'infocard-tall-list'})
         cards = container.find_all('span')
         pokemon_list = []
         for card in cards:
@@ -42,6 +42,7 @@ class WebScraper:
         container = table.find('div', attrs={'class': 'col desk-span-4 lap-span-6'})
         basic_data = container.find('table', attrs={'class': 'vitals-table'})
         rows = basic_data.find_all('tr')
+        number, pokemon_type, height, weight = 0, "", 0.0, 0.0
         for row in rows:
             if re.search('National', row.text):
                 number = int(row.find('td').text)

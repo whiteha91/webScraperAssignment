@@ -18,19 +18,23 @@ class Controller:
 
     def get_from_web(self, url, gen, p_type):
         my_web = WebScraper.WebScraper(url, gen, p_type)
-        list = my_web.list_gen()
-        for species in list:
+        p_list = my_web.list_gen()
+        for species in p_list:
             pokemon = my_web.info_grab(species)
             self.create_pokemon(species, pokemon)
             print(species + " added")
 
     def save_data(self, name):
-        pokemon = self.pokedex[name]
-        self.my_file_handler.save(pokemon)
+        try:
+            pokemon = self.pokedex[name]
+            self.my_file_handler.save(pokemon)
+            print("pokemon instance saved")
+        except SystemError:
+            print("pokemon instance could not be saved")
 
     def get_from_save(self):
-        list = self.my_file_handler.load_database()
-        for species in list:
+        p_list = self.my_file_handler.load_database()
+        for species in p_list:
             self.create_pokemon(species['name'], species)
 
     def create_pokemon(self, name, pokemon):

@@ -39,8 +39,7 @@ class Console (Cmd):
 
     def do_load(self):
         """
-        this
-        :return:
+        this function loads the saved instances of the pokemon class
         """
         try:
             self.my_controller.get_from_save()
@@ -54,12 +53,9 @@ class Console (Cmd):
     def do_sort_height(self, line):
         pass
 
-    def default(self, line):
-        """Called on an input line when the command prefix is not recognized.
-
-        If this method is not overridden, it prints an error message and
-        returns.
-
+    def do_exit(self, line):
         """
-        self.stdout.write('(╯°□°）╯︵ ┻━┻ Unknown syntax: %s\n'%line)
-
+        this  function allows the user to stop the command interpreter
+        :return:
+        """
+        return True
