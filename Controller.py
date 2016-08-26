@@ -4,14 +4,16 @@ from webScraperAssignment import Pokemon
 from datetime import datetime
 from webScraperAssignment import Console
 from webScraperAssignment import FileHandler
+from webScraperAssignment import Sorter
 
 
 class Controller:
     pokedex = {}
 
-    def __init__(self):
+    def __init__(self, the_sorter):
         self.my_console = Console.Console("(-o-)", """""", self)
         self.my_file_handler = FileHandler.FileHandler()
+        self.my_sorter = the_sorter
 
     def go(self):
         self.my_console.cmdloop()
@@ -53,5 +55,9 @@ class Controller:
             print("Image Link: " + self.pokedex[name].get_image())
             print("Type: " + self.pokedex[name].get_type())
             print("Pokedex Entry: " + self.pokedex[name].get_desc())
-            print("Height: " + str(self.pokedex[name].get_height()))
-            print("Weight: " + str(self.pokedex[name].get_weight()))
+            print("Height: " + str(self.pokedex[name].get_height()) + "m")
+            print("Weight: " + str(self.pokedex[name].get_weight()) + "kg")
+
+    def sort_by_height(self, direction):
+        print("Pokemon sorted by height")
+        print(self.my_sorter.sort_weight(self.pokedex, direction))
