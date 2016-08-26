@@ -35,6 +35,7 @@ class Console (Cmd):
         this function saves the instance of the pokemon class
         :param name: this is the name of the pokemon whose instance you wish to save
         """
+        name = name.title()
         self.my_controller.save_data(name)
 
     def do_load(self):
@@ -45,6 +46,17 @@ class Console (Cmd):
             self.my_controller.get_from_save()
         except IOError:
             print("pokemon not in database")
+
+    def do_stats(self, name):
+        """
+        this function gathers the stored information on a pokemon species
+        :param name: this is the name of the pokemon whose information you wish to view
+        """
+        name = name.title()
+        try:
+            self.my_controller.get_stats(name)
+        except KeyError:
+            print("Pokemon " + name + " doesn't exist in this generation")
 
     def do_sort_weight(self, line):
 

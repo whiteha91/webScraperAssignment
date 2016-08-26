@@ -17,13 +17,13 @@ class Pokemon:
         self._weight = weight
         self._date_added = date_added
 
-    def get_type(self):
+    def get_index(self):
         return self._index
 
     def get_image(self):
         return self._image
 
-    def get_index(self):
+    def get_type(self):
         return self._type
 
     def get_desc(self):

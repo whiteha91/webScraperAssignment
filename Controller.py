@@ -46,3 +46,12 @@ class Controller:
                                              pokemon["height"],
                                              pokemon["weight"],
                                              datetime.now().ctime())
+
+    def get_stats(self, name):
+            print(name)
+            print("Nation Number: " + str(self.pokedex[name].get_index()))
+            print("Image Link: " + self.pokedex[name].get_image())
+            print("Type: " + self.pokedex[name].get_type())
+            print("Pokedex Entry: " + self.pokedex[name].get_desc())
+            print("Height: " + str(self.pokedex[name].get_height()))
+            print("Weight: " + str(self.pokedex[name].get_weight()))
