@@ -13,7 +13,9 @@ class Controller:
     pokedex = {}
 
     def __init__(self):
-        self.my_console = Console.Console("(-o-)", """""", self)
+        self.my_console = Console.Console("(-o-)",
+                                          """"Welcome to the personal pokemon encyclopedia (or pokedex for short)
+        type help or '?' to see a list of commands""", self)
         self.my_file_handler = FileHandler.FileHandler()
         self.my_Calc = StatisticCalculator.StatisticCalculator()
 
@@ -63,12 +65,12 @@ class Controller:
     def get_min_weight(self):
         lightest = self.my_Calc.get_min_weight(self.pokedex)
         weight = self.pokedex[lightest].get_weight()
-        print("the lightest pokemon you have got data on is " + lightest + " at only " + str(weight)+ "kg")
+        print("the lightest pokemon you have got data on is " + lightest + " at only " + str(weight) + "kg")
 
     def get_max_weight(self):
         heaviest = self.my_Calc.get_max_weight(self.pokedex)
         weight = self.pokedex[heaviest].get_weight()
-        print("the heaviest pokemon you have got data on is " + heaviest + " at a wooping " +str(weight) + "kg")
+        print("the heaviest pokemon you have got data on is " + heaviest + " at a whooping " + str(weight) + "kg")
 
     def get_avg_weight(self):
         avg = self.my_Calc.get_avg_weight(self.pokedex)
@@ -82,7 +84,7 @@ class Controller:
     def get_max_height(self):
         tallest = self.my_Calc.get_max_height(self.pokedex)
         height = self.pokedex[tallest].get_height()
-        print("the tallest pokemon you have got data on is " + "tallest" + " at a wooping " + str(height) + "m")
+        print("the tallest pokemon you have got data on is " + "tallest" + " at a whooping " + str(height) + "m")
 
     def get_avg_height(self):
         avg = self.my_Calc.get_avg_height(self.pokedex)
