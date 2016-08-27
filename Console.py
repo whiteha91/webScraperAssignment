@@ -23,10 +23,10 @@ class Console (Cmd):
         """
         :param url: this is the base website that the program will go to in order to find the data it requires (leave
                     it blank to pass in the default)
-        :param gen: this is the generation that you wish to search through (leave it blank to pass in the default)
+        :param gen: this is the generation that you wish to search through (leave it blank to pass in the default of 1)
         :param p_type: this is the type of pokemon to search
-                       options are Normal, Fire, Fighting, Water ,Flying, Grass, Poison, Electric, Ground, Psychic, Rock
-                       , Ice, Bug, Dragon, Ghost. (leave it blank to pass in the default)
+                       options are Normal, Fire , Fighting, Water ,Flying, Grass, Poison, Electric, Ground, Psychic,
+                       Rock , Ice, Bug, Dragon, Ghost. (leave it blank to pass in the default of fire)
         """
         self.my_controller.get_from_web(url, gen, p_type)
 
@@ -38,7 +38,7 @@ class Console (Cmd):
         name = name.title()
         self.my_controller.save_data(name)
 
-    def do_load(self):
+    def do_load(self, line):
         """
         this function loads the saved instances of the pokemon class
         """
@@ -58,16 +58,45 @@ class Console (Cmd):
         except KeyError:
             print("Pokemon " + name + " doesn't exist in this generation")
 
-    def do_sort_weight(self, line):
+    def do_max_weight(self, line):
+        """
+        this function displays the heaviest Pokemon
+        """
+        self.my_controller.get_max_weight()
 
-        pass
+    def do_min_weight(self, line):
+        """
+        this function displays the lightest pokemon
+        """
+        self.my_controller.get_min_weight()
 
-    def do_sort_height(self, line):
-        pass
+    def do_average_weight(self, line):
+        """
+        this function displays the average weight of all pokemon stored
+        """
+        self.my_controller.get_avg_weight()
+
+    def do_max_height(self, line):
+        """
+        this function displays the tallest pokemon
+        """
+        self.my_controller.get_max_height()
+
+    def do_min_height(self, line):
+        """
+        this function displays the shortest pokemon
+        """
+        self.my_controller.get_min_height()
+
+    def do_average_height(self, line):
+        """
+        this function displays the average weight of all pokemon stored
+        """
+        self.my_controller.get_avg_height()
 
     def do_exit(self, line):
         """
-        this  function allows the user to stop the command interpreter
+        this function allows the user to stop the command interpreter
         :return:
         """
         return True

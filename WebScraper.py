@@ -14,7 +14,7 @@ class WebScraper:
         self.gen = gen
         self.type = p_type
 
-    def list_gen(self,):
+    def list_gen(self):
         r = requests.get(self.url + "national").text
         soup = BeautifulSoup(r, "html.parser")
         container = soup.find('div', attrs={'class': 'infocard-tall-list'})

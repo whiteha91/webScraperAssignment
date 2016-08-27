@@ -1,19 +1,21 @@
-
+"""
+@author: Angus Whitehead
+"""
 from webScraperAssignment import WebScraper
 from webScraperAssignment import Pokemon
 from datetime import datetime
 from webScraperAssignment import Console
 from webScraperAssignment import FileHandler
-from webScraperAssignment import Sorter
+from webScraperAssignment import StatisticCalculator
 
 
 class Controller:
     pokedex = {}
 
-    def __init__(self, the_sorter):
+    def __init__(self):
         self.my_console = Console.Console("(-o-)", """""", self)
         self.my_file_handler = FileHandler.FileHandler()
-        self.my_sorter = the_sorter
+        self.my_Calc = StatisticCalculator.StatisticCalculator()
 
     def go(self):
         self.my_console.cmdloop()
@@ -58,6 +60,30 @@ class Controller:
             print("Height: " + str(self.pokedex[name].get_height()) + "m")
             print("Weight: " + str(self.pokedex[name].get_weight()) + "kg")
 
-    def sort_by_height(self, direction):
-        print("Pokemon sorted by height")
-        print(self.my_sorter.sort_weight(self.pokedex, direction))
+    def get_min_weight(self):
+        lightest = self.my_Calc.get_min_weight(self.pokedex)
+        weight = self.pokedex[lightest].get_weight()
+        print("the lightest pokemon you have got data on is " + lightest + " at only " + str(weight)+ "kg")
+
+    def get_max_weight(self):
+        heaviest = self.my_Calc.get_max_weight(self.pokedex)
+        weight = self.pokedex[heaviest].get_weight()
+        print("the heaviest pokemon you have got data on is " + heaviest + " at a wooping " +str(weight) + "kg")
+
+    def get_avg_weight(self):
+        avg = self.my_Calc.get_avg_weight(self.pokedex)
+        print("the average weight of pokemon you have got data on is " + str(avg) + "kg")
+
+    def get_min_height(self):
+        shortest = self.my_Calc.get_min_height(self.pokedex)
+        height = self.pokedex[shortest].get_height()
+        print("the shortest pokemon you have got data on is " + shortest + " at only " + str(height) + "m")
+
+    def get_max_height(self):
+        tallest = self.my_Calc.get_max_height(self.pokedex)
+        height = self.pokedex[tallest].get_height()
+        print("the tallest pokemon you have got data on is " + "tallest" + " at a wooping " + str(height) + "m")
+
+    def get_avg_height(self):
+        avg = self.my_Calc.get_avg_height(self.pokedex)
+        print("the average height of pokemon you have got data on is " + str(avg) + "m")
