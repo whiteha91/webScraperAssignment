@@ -93,5 +93,5 @@ class Controller:
 
     def get_avg_height(self):
         avg = self.my_Calc.get_avg_height(self.pokedex)
-        print("the average height of pokemon you have got data on is "
-              + str(avg) + "m")
+        print("the average height of pokemon you have got data on is " +
+              str(avg) + "m")

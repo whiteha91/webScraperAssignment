@@ -27,7 +27,8 @@ class WebScraper:
             # print(gen)
             if re.search('G' + str(self.gen), gen['data-sprite']) and \
                     re.search(self.type, type_info):
-                pokemon_list.append(card.find('a', attrs={'class': 'ent-name'}).text)
+                pokemon_list.append(card.find('a', attrs={'class': 'ent-name'})
+                                    .text)
                 # print(card.find('a', attrs={'class': 'ent-name'}))
             # pokemon_list = card.find_all('a', attrs={'class': 'ent-name'})
             # for pokemon in pokemon_list:

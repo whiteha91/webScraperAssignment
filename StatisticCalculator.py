@@ -27,7 +27,7 @@ class StatisticCalculator:
         num_of_pokemon = len(pokedex)
         sum_of_weights = 0
         for name in pokedex:
-            sum_of_weights += pokedex[name].get_weight() 
+            sum_of_weights += pokedex[name].get_weight()
         avg = sum_of_weights / num_of_pokemon
         return avg
 
@@ -49,10 +49,10 @@ class StatisticCalculator:
                 tallest_pokemon = name
         return tallest_pokemon
 
-    def get_avg_height(self,pokedex):
+    def get_avg_height(self, pokedex):
         num_of_pokemon = len(pokedex)
         sum_of_heights = 0
         for name in pokedex:
-            sum_of_heights += pokedex[name].get_height() 
+            sum_of_heights += pokedex[name].get_height()
         avg = sum_of_heights / num_of_pokemon
         return avg
