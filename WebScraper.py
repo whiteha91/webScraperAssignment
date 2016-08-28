@@ -36,7 +36,7 @@ class WebScraper:
     def info_grab(self, pokemon,):
         r = requests.get(self.url + pokemon).text
         soup = BeautifulSoup(r, "html.parser")
-        desc = soup.find('div', attrs={'class': 'col desk-span-8 lap-span-6'}).text
+        desc = soup.find('div', attrs={'class': 'col desk-span-8 lap-span-6'}).text[:-1]
         table = soup.find('div', attrs={'class': 'tabset-basics'})
         img = table.find('img')['src']
         container = table.find('div', attrs={'class': 'col desk-span-4 lap-span-6'})

@@ -28,7 +28,6 @@ class Controller:
         for species in p_list:
             pokemon = my_web.info_grab(species)
             self.create_pokemon(species, pokemon)
-            print(species + " added")
 
     def save_data(self, name):
         try:
@@ -52,6 +51,7 @@ class Controller:
                                              pokemon["height"],
                                              pokemon["weight"],
                                              datetime.now().ctime())
+        print(name + " added")
 
     def get_stats(self, name):
             print(name)

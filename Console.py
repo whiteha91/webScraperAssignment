@@ -38,7 +38,7 @@ class Console (Cmd):
         name = name.title()
         self.my_controller.save_data(name)
 
-    def do_load(self, line):
+    def do_load(self):
         """
         this function loads the saved instances of the pokemon class
         """
