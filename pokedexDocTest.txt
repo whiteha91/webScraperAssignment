@@ -20,8 +20,8 @@ Pikachu added
 Magmar
 Nation Number: 126
 Image Link: https://img.pokemondb.net/artwork/magmar.jpg
-Type: Fire
-Pokedex Entry:
+Type: Fire 
+Pokedex Entry: 
 Magmar is a Fire type Pokémon introduced in Generation 1. It is known as the Spitfire Pokémon.
 Height: 1.3m
 Weight: 44.5kg

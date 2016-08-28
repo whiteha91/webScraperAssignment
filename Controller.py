@@ -65,27 +65,33 @@ class Controller:
     def get_min_weight(self):
         lightest = self.my_Calc.get_min_weight(self.pokedex)
         weight = self.pokedex[lightest].get_weight()
-        print("the lightest pokemon you have got data on is " + lightest + " at only " + str(weight) + "kg")
+        print("the lightest pokemon you have got data on is " + lightest +
+              " at only " + str(weight) + "kg")
 
     def get_max_weight(self):
         heaviest = self.my_Calc.get_max_weight(self.pokedex)
         weight = self.pokedex[heaviest].get_weight()
-        print("the heaviest pokemon you have got data on is " + heaviest + " at a whooping " + str(weight) + "kg")
+        print("the heaviest pokemon you have got data on is " + heaviest +
+              " at a whooping " + str(weight) + "kg")
 
     def get_avg_weight(self):
         avg = self.my_Calc.get_avg_weight(self.pokedex)
-        print("the average weight of pokemon you have got data on is " + str(avg) + "kg")
+        print("the average weight of pokemon you have got data on is " +
+              str(avg) + "kg")
 
     def get_min_height(self):
         shortest = self.my_Calc.get_min_height(self.pokedex)
         height = self.pokedex[shortest].get_height()
-        print("the shortest pokemon you have got data on is " + shortest + " at only " + str(height) + "m")
+        print("the shortest pokemon you have got data on is " + shortest +
+              " at only " + str(height) + "m")
 
     def get_max_height(self):
         tallest = self.my_Calc.get_max_height(self.pokedex)
         height = self.pokedex[tallest].get_height()
-        print("the tallest pokemon you have got data on is " + "tallest" + " at a whooping " + str(height) + "m")
+        print("the tallest pokemon you have got data on is " + "tallest" +
+              " at a whooping " + str(height) + "m")
 
     def get_avg_height(self):
         avg = self.my_Calc.get_avg_height(self.pokedex)
-        print("the average height of pokemon you have got data on is " + str(avg) + "m")
+        print("the average height of pokemon you have got data on is "
+              + str(avg) + "m")

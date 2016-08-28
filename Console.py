@@ -19,21 +19,27 @@ class Console (Cmd):
         self.intro = the_intro
         self.my_controller = the_controller
 
-    def do_scrape(self, line, url="http://pokemondb.net/pokedex/", gen=1, p_type="Fire"):
+    def do_scrape(self, line, url="http://pokemondb.net/pokedex/",
+                  gen=1, p_type="Fire"):
         """
-        :param url: this is the base website that the program will go to in order to find the data it requires (leave
-                    it blank to pass in the default)
-        :param gen: this is the generation that you wish to search through (leave it blank to pass in the default of 1)
+        :param url: this is the base website that the program will go to in
+                order to find the data it requires (leave it blank to pass in
+                 the default)
+        :param gen: this is the generation that you wish to search through
+                   (leave it blank to pass in the default of 1)
         :param p_type: this is the type of pokemon to search
-                       options are Normal, Fire , Fighting, Water ,Flying, Grass, Poison, Electric, Ground, Psychic,
-                       Rock , Ice, Bug, Dragon, Ghost. (leave it blank to pass in the default of fire)
+                       options are Normal, Fire , Fighting, Water ,Flying,
+                       Grass, Poison, Electric, Ground, Psychic,
+                       Rock , Ice, Bug, Dragon, Ghost. (leave it blank to pass
+                       in the default of fire)
         """
         self.my_controller.get_from_web(url, gen, p_type)
 
     def do_save(self, name):
         """
         this function saves the instance of the pokemon class
-        :param name: this is the name of the pokemon whose instance you wish to save
+        :param name: this is the name of the pokemon whose instance you wish
+                to save
         """
         name = name.title()
         self.my_controller.save_data(name)
@@ -50,7 +56,8 @@ class Console (Cmd):
     def do_stats(self, name):
         """
         this function gathers the stored information on a pokemon species
-        :param name: this is the name of the pokemon whose information you wish to view
+        :param name: this is the name of the pokemon whose information you wish
+         to view
         """
         name = name.title()
         try:
