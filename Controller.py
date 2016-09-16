@@ -1,12 +1,12 @@
 """
 @author: Angus Whitehead
 """
-from webScraperAssignment import WebScraper
-from webScraperAssignment import Pokemon
+import WebScraper
+import Pokemon
 from datetime import datetime
-from webScraperAssignment import Console
-from webScraperAssignment import FileHandler
-from webScraperAssignment import StatisticCalculator
+import Console
+import FileHandler
+import StatisticCalculator
 
 
 class Controller:

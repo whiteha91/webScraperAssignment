@@ -2,7 +2,7 @@
 @author: Angus Whitehead
 """
 
-from webScraperAssignment import Controller
+import Controller
 
 
 def start():

@@ -18,7 +18,7 @@ class StatisticCalculator:
         max_weight = -1
         heaviest_pokemon = ""
         for name in pokedex:
-            if pokedex[name].get_weight() < max_weight:
+            if pokedex[name].get_weight() > max_weight:
                 max_weight = pokedex[name].get_weight()
                 heaviest_pokemon = name
         return heaviest_pokemon
@@ -44,7 +44,7 @@ class StatisticCalculator:
         max_height = -1
         tallest_pokemon = ""
         for name in pokedex:
-            if pokedex[name].get_height() < max_height:
+            if pokedex[name].get_height() > max_height:
                 max_height = pokedex[name].get_height()
                 tallest_pokemon = name
         return tallest_pokemon

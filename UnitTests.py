@@ -1,6 +1,6 @@
 import unittest
-from webScraperAssignment import WebScraper
-from webScraperAssignment import Controller
+import WebScraper
+import Controller
 
 
 class UnitTests(unittest.TestCase):
@@ -39,6 +39,7 @@ class UnitTests(unittest.TestCase):
         controller.get_from_web(self.url, 1, "Fire")
         self.assertEqual(controller.pokedex['Charmander'].get_desc(), expected,
                          "test failed")
+    def test_
 
 if __name__ == '__main__':
     unittest.main()
