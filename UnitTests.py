@@ -39,7 +39,6 @@ class UnitTests(unittest.TestCase):
         controller.get_from_web(self.url, 1, "Fire")
         self.assertEqual(controller.pokedex['Charmander'].get_desc(), expected,
                          "test failed")
-    def test_
 
 if __name__ == '__main__':
     unittest.main()

@@ -14,8 +14,8 @@ class FileHandler:
     def load_database(self):
         database = shelve.open('pokedexData.db')
         loaded_pokemon = []
-        for i in database:
-            loaded_pokemon = self.load_objects(i)
+        for key in database:
+            loaded_pokemon.append(database[key])
         return loaded_pokemon
 
     def load_objects(self, database):

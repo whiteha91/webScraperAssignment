@@ -40,7 +40,8 @@ class Controller:
     def get_from_save(self):
         p_list = self.my_file_handler.load_database()
         for species in p_list:
-            self.create_pokemon(species['name'], species)
+            self.pokedex[species.name] = species
+            print(species.name + "added")
 
     def create_pokemon(self, name, pokemon):
         self.pokedex[name] = Pokemon.Pokemon(pokemon["number"],
