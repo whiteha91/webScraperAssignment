@@ -35,7 +35,7 @@ class WebScraper:
             #     pokemon_list.append(pokemon_list)
         return pokemon_list
 
-    def info_grab(self, pokemon,):
+    def info_grab(self, pokemon):
         r = requests.get(self.url + pokemon).text
         s = BeautifulSoup(r, "html.parser")
         desc = s.find('div',
