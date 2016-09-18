@@ -89,7 +89,7 @@ class Controller:
     def get_max_height(self):
         tallest = self.my_Calc.get_max_height(self.pokedex)
         height = self.pokedex[tallest].get_height()
-        print("the tallest pokemon you have got data on is " + "tallest" +
+        print("the tallest pokemon you have got data on is " + tallest +
               " at a whooping " + str(height) + "m")
 
     def get_avg_height(self):

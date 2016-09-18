@@ -1,8 +1,10 @@
 import unittest
 from WebScraper import WebScraper
 
+
 class RefactoringUnitTests(unittest.TestCase):
     url = ""
+    maxDiff = None
 
     def setUp(self):
         self.url = "http://pokemondb.net/pokedex/"
@@ -26,17 +28,16 @@ class RefactoringUnitTests(unittest.TestCase):
 
     def test_secondary_scrape(self):
         expected = {
-            "name": "Charmander",
-            "image": 'https://img.pokemondb.net/artwork/chaermander.jpg',
-            "number": "004",
-            "type": "Fire",
-            "desc": "Charmander is a Fire type Pokémon introduced in\
-             Generation 1. It is known as the Lizard Pokémon.",
-            "height": "0.61",
-            "weight": "8.5"
+            'name': 'Charmander',
+            'image': 'https://img.pokemondb.net/artwork/charmander.jpg',
+            'number': 4,
+            'type': 'Fire ',
+            'desc': '\nCharmander is a Fire type Pokémon introduced in Generation 1. It is known as the Lizard Pokémon.',
+            'height': 0.61,
+            'weight': 8.5
         }
         self.assertEqual(
-            WebScraper.info_grab(self.url, 1, "Fire").info_grab("Charmander"),
+            WebScraper(self.url, 1, "Fire").info_grab("Charmander"),
             expected, "Output has changed")
 
 if __name__ == '__main__':
