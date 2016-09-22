@@ -23,16 +23,11 @@ class WebScraper:
         for card in cards:
             gen = card.find('a')
             type_info = card.find('small', attrs={'class': 'aside'}).text
-            # print(type_info + ' ' + self.type)
-            # print(gen)
             if re.search('G' + str(self.gen), gen['data-sprite']) and \
                     re.search(self.type, type_info):
                 pokemon_list.append(card.find('a', attrs={'class': 'ent-name'})
                                     .text)
-                # print(card.find('a', attrs={'class': 'ent-name'}))
-            # pokemon_list = card.find_all('a', attrs={'class': 'ent-name'})
-            # for pokemon in pokemon_list:
-            #     pokemon_list.append(pokemon_list)
+
         return pokemon_list
 
     def info_grab(self, pokemon):
@@ -66,3 +61,5 @@ class WebScraper:
                 "desc": desc,
                 "height": height,
                 "weight": weight}
+
+    def data_sort(self, rows):
