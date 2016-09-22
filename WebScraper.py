@@ -62,5 +62,5 @@ class WebScraper:
                 "height": height,
                 "weight": weight}
 
-    def data_sort(self, pokemon, rows):
+    def data_sort(self, data):
         pass
