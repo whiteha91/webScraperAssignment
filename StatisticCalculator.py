@@ -5,7 +5,7 @@
 
 class StatisticCalculator:
 
-    def get_min_weight(self, pokedex):
+    def get_min_weight(self, pokedex, measurable):
         min_weight = 1000000000
         lightest_pokemon = ""
         for name in pokedex:
@@ -14,7 +14,7 @@ class StatisticCalculator:
                 lightest_pokemon = name
         return lightest_pokemon
 
-    def get_max_weight(self, pokedex):
+    def get_max_weight(self, pokedex, measurable):
         max_weight = -1
         heaviest_pokemon = ""
         for name in pokedex:
@@ -23,7 +23,7 @@ class StatisticCalculator:
                 heaviest_pokemon = name
         return heaviest_pokemon
 
-    def get_avg_weight(self, pokedex):
+    def get_avg_weight(self, pokedex, measurable):
         num_of_pokemon = len(pokedex)
         sum_of_weights = 0
         for name in pokedex:
