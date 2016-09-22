@@ -64,13 +64,13 @@ class Controller:
             print("Weight: " + str(self.pokedex[name].get_weight()) + "kg")
 
     def get_min_weight(self):
-        lightest = self.my_Calc.get_min_weight(self.pokedex, "weight")
+        lightest = self.my_Calc.get_min(self.pokedex, "weight")
         weight = self.pokedex[lightest].get_weight()
         print("the lightest pokemon you have got data on is " + lightest +
               " at only " + str(weight) + "kg")
 
     def get_max_weight(self):
-        heaviest = self.my_Calc.get_max_weight(self.pokedex, "weight")
+        heaviest = self.my_Calc.get_max(self.pokedex, "weight")
         weight = self.pokedex[heaviest].get_weight()
         print("the heaviest pokemon you have got data on is " + heaviest +
               " at a whooping " + str(weight) + "kg")
