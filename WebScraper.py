@@ -63,4 +63,25 @@ class WebScraper:
                 "weight": weight}
 
     def data_sort(self, data):
-        pass
+        rows = data[3]
+        number, pokemon_type, height, weight = 0, "", 0.0, 0.0
+        for row in rows:
+            if re.search('National', row.text):
+                number = int(row.find('td').text)
+            elif re.search('Type', row.text):
+                pokemon_type = row.find('td').text[1:]
+            elif re.search('Height', row.text):
+                height = float(row.find('td').text[row.find('td').
+                               text.index('(') + 1:row.find('td').
+                               text.index(')') - 1])
+            elif re.search('Weight', row.text):
+                weight = float(row.find('td').text[row.find('td').text.
+                               index('(') + 1:row.find('td').text.index(
+                    ')') - 3])
+        return {"name": data[0],
+                "image": data[1],
+                "number": number,
+                "type": pokemon_type,
+                "desc": data[2],
+                "height": height,
+                "weight": weight}
