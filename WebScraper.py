@@ -63,3 +63,4 @@ class WebScraper:
                 "weight": weight}
 
     def data_sort(self, rows):
+        pass
