@@ -81,18 +81,18 @@ class Controller:
               str(avg) + "kg")
 
     def get_min_height(self):
-        shortest = self.my_Calc.get_min_height(self.pokedex)
+        shortest = self.my_Calc.get_min(self.pokedex, "height")
         height = self.pokedex[shortest].get_height()
         print("the shortest pokemon you have got data on is " + shortest +
               " at only " + str(height) + "m")
 
     def get_max_height(self):
-        tallest = self.my_Calc.get_max_height(self.pokedex)
+        tallest = self.my_Calc.get_max(self.pokedex, "height")
         height = self.pokedex[tallest].get_height()
         print("the tallest pokemon you have got data on is " + tallest +
               " at a whooping " + str(height) + "m")
 
     def get_avg_height(self):
-        avg = self.my_Calc.get_avg_height(self.pokedex)
+        avg = self.my_Calc.get_avg(self.pokedex, "height")
         print("the average height of pokemon you have got data on is " +
               str(avg) + "m")
