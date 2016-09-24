@@ -9,8 +9,12 @@ class StatisticCalculator:
         min_value = 1000000000
         pokemon = ""
         for name in pokedex:
-            if pokedex[name].get_weight() < min_value:
-                min_value = pokedex[name].get_weight()
+            if measurable == "weight":
+                value = pokedex[name].get_weight()
+            else:
+                value = pokedex[name].get_height()
+            if value < min_value:
+                min_value = value
                 pokemon = name
         return pokemon
 
@@ -18,8 +22,12 @@ class StatisticCalculator:
         max_value = -1
         pokemon = ""
         for name in pokedex:
-            if pokedex[name].get_weight() > max_value:
-                max_value = pokedex[name].get_weight()
+            if measurable == "weight":
+                value = pokedex[name].get_weight()
+            else:
+                value = pokedex[name].get_height()
+            if value > max_value:
+                max_value = value
                 pokemon = name
         return pokemon
 
@@ -27,7 +35,11 @@ class StatisticCalculator:
         num_of_pokemon = len(pokedex)
         sum_of_values = 0
         for name in pokedex:
-            sum_of_values += pokedex[name].get_weight()
+            if measurable == "weight":
+                value = pokedex[name].get_weight()
+            else:
+                value = pokedex[name].get_height()
+            sum_of_values += value
         avg = sum_of_values / num_of_pokemon
         return avg
 
