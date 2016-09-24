@@ -76,7 +76,7 @@ class Controller:
               " at a whooping " + str(weight) + "kg")
 
     def get_avg_weight(self):
-        avg = self.my_Calc.get_avg_weight(self.pokedex, "weight")
+        avg = self.my_Calc.get_avg(self.pokedex, "weight")
         print("the average weight of pokemon you have got data on is " +
               str(avg) + "kg")
 
