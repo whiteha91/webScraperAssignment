@@ -44,14 +44,8 @@ class Controller:
             print(species.name + "added")
 
     def create_pokemon(self, name, pokemon):
-        self.pokedex[name] = Pokemon.Pokemon(pokemon["number"],
-                                             pokemon["image"],
-                                             name,
-                                             pokemon["type"],
-                                             pokemon["desc"],
-                                             pokemon["height"],
-                                             pokemon["weight"],
-                                             datetime.now().ctime())
+        self.pokedex[name] = Pokemon.Pokemon(
+            pokemon, name, datetime.now().ctime())
         print(name + " added")
 
     def get_stats(self, name):
