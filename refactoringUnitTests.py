@@ -32,8 +32,7 @@ class RefactoringUnitTests(unittest.TestCase):
             'image': 'https://img.pokemondb.net/artwork/charmander.jpg',
             'number': 4,
             'type': 'Fire ',
-            'desc': '\nCharmander is a Fire type Pokémon introduced in '
-                    'Generation 1. It is known as the Lizard Pokémon.',
+            'desc': '\nCharmander is a Fire type Pokémon introduced in Generation 1. It is known as the Lizard Pokémon.',
             'height': 0.61,
             'weight': 8.5
         }
