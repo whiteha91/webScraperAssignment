@@ -9,8 +9,11 @@ import FileHandler
 import StatisticCalculator
 
 
+
 class Controller:
     pokedex = {}
+    last_entry = ""
+    observers = []
 
     def __init__(self):
         self.my_console = Console.Console("(-o-)",
@@ -41,12 +44,16 @@ class Controller:
         p_list = self.my_file_handler.load_database()
         for species in p_list:
             self.pokedex[species.name] = species
-            print(species.name + "added")
+            self.last_entry = species.name
+            self.notify_all_observers()
+            self.last_entry = ""
 
     def create_pokemon(self, name, pokemon):
         self.pokedex[name] = Pokemon.Pokemon(
             pokemon, name, datetime.now().ctime())
-        print(name + " added")
+        self.last_entry = name
+        self.notify_all_observers()
+        self.last_entry = ""
 
     def get_stats(self, name):
             print(name)
@@ -90,3 +97,13 @@ class Controller:
         avg = self.my_Calc.get_avg(self.pokedex, "height")
         print("the average height of pokemon you have got data on is " +
               str(avg) + "m")
+
+    def subscribe(self, observer):
+        self.observers.append(observer)
+
+    def notify_all_observers(self):
+        for observer in self.observers:
+            observer.update()
+
+    def get_entry(self):
+        return self.last_entry
