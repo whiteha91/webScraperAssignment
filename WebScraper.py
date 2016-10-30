@@ -23,19 +23,14 @@ class WebScraper:
         for card in cards:
             gen = card.find('a')
             type_info = card.find('small', attrs={'class': 'aside'}).text
-            # print(type_info + ' ' + self.type)
-            # print(gen)
             if re.search('G' + str(self.gen), gen['data-sprite']) and \
                     re.search(self.type, type_info):
                 pokemon_list.append(card.find('a', attrs={'class': 'ent-name'})
                                     .text)
-                # print(card.find('a', attrs={'class': 'ent-name'}))
-            # pokemon_list = card.find_all('a', attrs={'class': 'ent-name'})
-            # for pokemon in pokemon_list:
-            #     pokemon_list.append(pokemon_list)
+
         return pokemon_list
 
-    def info_grab(self, pokemon,):
+    def info_grab(self, pokemon):
         r = requests.get(self.url + pokemon).text
         s = BeautifulSoup(r, "html.parser")
         desc = s.find('div',
@@ -46,6 +41,11 @@ class WebScraper:
                                attrs={'class': 'col desk-span-4 lap-span-6'})
         basic_data = container.find('table', attrs={'class': 'vitals-table'})
         rows = basic_data.find_all('tr')
+        data = [pokemon, img, desc, rows]
+        return self.data_sort(data)
+
+    def data_sort(self, data):
+        rows = data[3]
         number, pokemon_type, height, weight = 0, "", 0.0, 0.0
         for row in rows:
             if re.search('National', row.text):
@@ -54,15 +54,16 @@ class WebScraper:
                 pokemon_type = row.find('td').text[1:]
             elif re.search('Height', row.text):
                 height = float(row.find('td').text[row.find('td').
-                               text.index('(')+1:row.find('td').
-                               text.index(')')-1])
+                               text.index('(') + 1:row.find('td').
+                               text.index(')') - 1])
             elif re.search('Weight', row.text):
                 weight = float(row.find('td').text[row.find('td').text.
-                               index('(')+1:row.find('td').text.index(')')-3])
-        return {"name": pokemon,
-                "image": img,
+                               index('(') + 1:row.find('td').text.index(
+                    ')') - 3])
+        return {"name": data[0],
+                "image": data[1],
                 "number": number,
                 "type": pokemon_type,
-                "desc": desc,
+                "desc": data[2],
                 "height": height,
                 "weight": weight}

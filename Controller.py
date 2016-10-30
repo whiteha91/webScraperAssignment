@@ -9,8 +9,11 @@ import FileHandler
 import StatisticCalculator
 
 
+
 class Controller:
     pokedex = {}
+    last_entry = ""
+    observers = []
 
     def __init__(self):
         self.my_console = Console.Console("(-o-)",
@@ -41,18 +44,16 @@ class Controller:
         p_list = self.my_file_handler.load_database()
         for species in p_list:
             self.pokedex[species.name] = species
-            print(species.name + "added")
+            self.last_entry = species.name
+            self.notify_all_observers()
+            self.last_entry = ""
 
     def create_pokemon(self, name, pokemon):
-        self.pokedex[name] = Pokemon.Pokemon(pokemon["number"],
-                                             pokemon["image"],
-                                             name,
-                                             pokemon["type"],
-                                             pokemon["desc"],
-                                             pokemon["height"],
-                                             pokemon["weight"],
-                                             datetime.now().ctime())
-        print(name + " added")
+        self.pokedex[name] = Pokemon.Pokemon(
+            pokemon, name, datetime.now().ctime())
+        self.last_entry = name
+        self.notify_all_observers()
+        self.last_entry = ""
 
     def get_stats(self, name):
             print(name)
@@ -64,35 +65,45 @@ class Controller:
             print("Weight: " + str(self.pokedex[name].get_weight()) + "kg")
 
     def get_min_weight(self):
-        lightest = self.my_Calc.get_min_weight(self.pokedex)
+        lightest = self.my_Calc.get_min(self.pokedex, "weight")
         weight = self.pokedex[lightest].get_weight()
         print("the lightest pokemon you have got data on is " + lightest +
               " at only " + str(weight) + "kg")
 
     def get_max_weight(self):
-        heaviest = self.my_Calc.get_max_weight(self.pokedex)
+        heaviest = self.my_Calc.get_max(self.pokedex, "weight")
         weight = self.pokedex[heaviest].get_weight()
         print("the heaviest pokemon you have got data on is " + heaviest +
               " at a whooping " + str(weight) + "kg")
 
     def get_avg_weight(self):
-        avg = self.my_Calc.get_avg_weight(self.pokedex)
+        avg = self.my_Calc.get_avg(self.pokedex, "weight")
         print("the average weight of pokemon you have got data on is " +
               str(avg) + "kg")
 
     def get_min_height(self):
-        shortest = self.my_Calc.get_min_height(self.pokedex)
+        shortest = self.my_Calc.get_min(self.pokedex, "height")
         height = self.pokedex[shortest].get_height()
         print("the shortest pokemon you have got data on is " + shortest +
               " at only " + str(height) + "m")
 
     def get_max_height(self):
-        tallest = self.my_Calc.get_max_height(self.pokedex)
+        tallest = self.my_Calc.get_max(self.pokedex, "height")
         height = self.pokedex[tallest].get_height()
-        print("the tallest pokemon you have got data on is " + "tallest" +
+        print("the tallest pokemon you have got data on is " + tallest +
               " at a whooping " + str(height) + "m")
 
     def get_avg_height(self):
-        avg = self.my_Calc.get_avg_height(self.pokedex)
+        avg = self.my_Calc.get_avg(self.pokedex, "height")
         print("the average height of pokemon you have got data on is " +
               str(avg) + "m")
+
+    def subscribe(self, observer):
+        self.observers.append(observer)
+
+    def notify_all_observers(self):
+        for observer in self.observers:
+            observer.update()
+
+    def get_entry(self):
+        return self.last_entry

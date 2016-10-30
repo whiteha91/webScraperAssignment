@@ -1,0 +1,23 @@
+>>> import Controller
+>>> c = Controller.Controller()
+>>> c.get_from_web("http://pokemondb.net/pokedex/", 1, "Fire")
+Charmander added
+Charmeleon added
+Charizard added
+Vulpix added
+Ninetales added
+Growlithe added
+Arcanine added
+Ponyta added
+Rapidash added
+Magmar added
+Flareon added
+Moltres added
+>>> c.get_max_height()
+the tallest pokemon you have got data on is Moltres at a whooping 2.01m
+>>> c.get_max_weight()
+the heaviest pokemon you have got data on is Arcanine at a whooping 155.0kg
+>>> c.get_min_height() #doctest:+ELLIPSIS
+the shortest pokemon you have got data on is ... at only 0.61m
+>>> c.get_min_weight()
+the lightest pokemon you have got data on is Charmander at only 8.5kg
