@@ -13,4 +13,4 @@ class EntryObserver(Observer.Observer):
     def update(self):
         species = self.subject.get_entry()
         if species != "":
-            print(self.subject.get_entry(), " added")
+            print(species, " added")

@@ -9,9 +9,9 @@ import FileHandler
 import StatisticCalculator
 
 
-
 class Controller:
     pokedex = {}
+    selected_pokemon = [2]
     last_entry = ""
     observers = []
 
@@ -33,12 +33,9 @@ class Controller:
             self.create_pokemon(species, pokemon)
 
     def save_data(self, name):
-        try:
-            pokemon = self.pokedex[name]
-            self.my_file_handler.save(pokemon)
-            print("pokemon instance saved")
-        except SystemError:
-            print("pokemon instance could not be saved")
+        pokemon = self.pokedex[name]
+        self.my_file_handler.save(pokemon)
+        print("pokemon instance saved")
 
     def get_from_save(self):
         p_list = self.my_file_handler.load_database()
@@ -56,13 +53,10 @@ class Controller:
         self.last_entry = ""
 
     def get_stats(self, name):
-            print(name)
-            print("Nation Number: " + str(self.pokedex[name].get_index()))
-            print("Image Link: " + self.pokedex[name].get_image())
-            print("Type: " + self.pokedex[name].get_type())
-            print("Pokedex Entry: " + self.pokedex[name].get_desc())
-            print("Height: " + str(self.pokedex[name].get_height()) + "m")
-            print("Weight: " + str(self.pokedex[name].get_weight()) + "kg")
+            self.selected_pokemon[0] = name
+            self.selected_pokemon[1] = self.pokedex[name]
+            self.notify_all_observers()
+            self.selected_pokemon.clear()
 
     def get_min_weight(self):
         lightest = self.my_Calc.get_min(self.pokedex, "weight")
@@ -107,3 +101,6 @@ class Controller:
 
     def get_entry(self):
         return self.last_entry
+
+    def get_selected(self):
+        return self.selected_pokemon

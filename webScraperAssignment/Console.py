@@ -42,7 +42,10 @@ class Console (Cmd):
                 to save
         """
         name = name.title()
-        self.my_controller.save_data(name)
+        try:
+            self.my_controller.save_data(name)
+        except SystemError:
+            print("pokemon instance could not be saved")
 
     def do_load(self):
         """
