@@ -1,0 +1,12 @@
+>>> import Controller
+>>> Controller.Controller().create_pokemon("Pikachu", {"name": "Pikachu", "image": "https://img.pokemondb.net/artwork/pikachu.jpg","number": 25, "type": "Electric", "desc": "Pikachu is an Electric type Pokémon introduced in Generation 1 It is known as the Mouse Pokémon", "height": 0.41, "weight": 6.0})
+Pikachu added
+
+>>> Controller.Controller().get_stats("Pikachu")
+Pikachu
+Nation Number: 25
+Image Link: https://img.pokemondb.net/artwork/pikachu.jpg
+Type: Electric
+Pokedex Entry: Pikachu is an Electric type Pokémon introduced in Generation 1 It is known as the Mouse Pokémon
+Height: 0.41m
+Weight: 6.0kg
