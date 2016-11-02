@@ -11,9 +11,10 @@ import StatisticCalculator
 
 class Controller:
     pokedex = {}
-    selected_pokemon = [2]
+    selected_pokemon = None
     last_entry = ""
     observers = []
+    stand_out = ["", 0, ""]
 
     def __init__(self):
         self.my_console = Console.Console("(-o-)",
@@ -53,44 +54,49 @@ class Controller:
         self.last_entry = ""
 
     def get_stats(self, name):
-            self.selected_pokemon[0] = name
-            self.selected_pokemon[1] = self.pokedex[name]
+            self.selected_pokemon = self.pokedex[name]
             self.notify_all_observers()
-            self.selected_pokemon.clear()
+            self.selected_pokemon = None
 
     def get_min_weight(self):
         lightest = self.my_Calc.get_min(self.pokedex, "weight")
         weight = self.pokedex[lightest].get_weight()
-        print("the lightest pokemon you have got data on is " + lightest +
-              " at only " + str(weight) + "kg")
+        self.stand_out = [lightest, weight, "min_weight"]
+        self.notify_all_observers()
+        self.stand_out = ["", 0, ""]
 
     def get_max_weight(self):
         heaviest = self.my_Calc.get_max(self.pokedex, "weight")
         weight = self.pokedex[heaviest].get_weight()
-        print("the heaviest pokemon you have got data on is " + heaviest +
-              " at a whooping " + str(weight) + "kg")
+        self.stand_out = [heaviest, weight, "max_weight"]
+        self.notify_all_observers()
+        self.stand_out = ["", 0, ""]
 
     def get_avg_weight(self):
         avg = self.my_Calc.get_avg(self.pokedex, "weight")
-        print("the average weight of pokemon you have got data on is " +
-              str(avg) + "kg")
+        self.stand_out = ["avg", avg, "avg_weight"]
+        self.notify_all_observers()
+        self.stand_out = ["", 0, ""]
 
     def get_min_height(self):
         shortest = self.my_Calc.get_min(self.pokedex, "height")
         height = self.pokedex[shortest].get_height()
-        print("the shortest pokemon you have got data on is " + shortest +
-              " at only " + str(height) + "m")
+        self.stand_out = [shortest, height, "min_height"]
+        self.notify_all_observers()
+        self.stand_out = ["", 0, ""]
 
     def get_max_height(self):
         tallest = self.my_Calc.get_max(self.pokedex, "height")
         height = self.pokedex[tallest].get_height()
-        print("the tallest pokemon you have got data on is " + tallest +
-              " at a whooping " + str(height) + "m")
+        self.stand_out = [tallest, height, "max_height"]
+        self.notify_all_observers()
+        self.stand_out = ["", 0, ""]
 
     def get_avg_height(self):
         avg = self.my_Calc.get_avg(self.pokedex, "height")
-        print("the average height of pokemon you have got data on is " +
-              str(avg) + "m")
+        self.stand_out = ["avg", avg, "avg_height"]
+        self.notify_all_observers()
+        self.stand_out = ["", 0, ""]
 
     def subscribe(self, observer):
         self.observers.append(observer)
@@ -104,3 +110,6 @@ class Controller:
 
     def get_selected(self):
         return self.selected_pokemon
+
+    def get_stat(self):
+        return self.stand_out
