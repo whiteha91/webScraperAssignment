@@ -72,37 +72,37 @@ class Console (Cmd):
         """
         this function displays the heaviest Pokemon
         """
-        self.my_controller.get_max_weight()
+        self.my_controller.get_max("weight")
 
     def do_min_weight(self, line):
         """
         this function displays the lightest pokemon
         """
-        self.my_controller.get_min_weight()
+        self.my_controller.get_min("weight")
 
     def do_average_weight(self, line):
         """
         this function displays the average weight of all pokemon stored
         """
-        self.my_controller.get_avg_weight()
+        self.my_controller.get_avg("weight")
 
     def do_max_height(self, line):
         """
         this function displays the tallest pokemon
         """
-        self.my_controller.get_max_height()
+        self.my_controller.get_max("height")
 
     def do_min_height(self, line):
         """
         this function displays the shortest pokemon
         """
-        self.my_controller.get_min_height()
+        self.my_controller.get_min("height")
 
     def do_average_height(self, line):
         """
         this function displays the average weight of all pokemon stored
         """
-        self.my_controller.get_avg_height()
+        self.my_controller.get_avg("height")
 
     def do_exit(self, line):
         """

@@ -7,9 +7,10 @@ from datetime import datetime
 import Console
 import FileHandler
 import StatisticCalculator
+import Subject
 
 
-class Controller:
+class Controller(Subject.Subject):
     pokedex = {}
     selected_pokemon = None
     last_entry = ""
@@ -58,43 +59,23 @@ class Controller:
             self.notify_all_observers()
             self.selected_pokemon = None
 
-    def get_min_weight(self):
-        lightest = self.my_Calc.get_min(self.pokedex, "weight")
+    def get_min(self, stat):
+        lightest = self.my_Calc.get_min(self.pokedex, stat)
         weight = self.pokedex[lightest].get_weight()
-        self.stand_out = [lightest, weight, "min_weight"]
+        self.stand_out = [lightest, weight, "min_" + stat]
         self.notify_all_observers()
         self.stand_out = ["", 0, ""]
 
-    def get_max_weight(self):
+    def get_max(self, stat):
         heaviest = self.my_Calc.get_max(self.pokedex, "weight")
         weight = self.pokedex[heaviest].get_weight()
-        self.stand_out = [heaviest, weight, "max_weight"]
+        self.stand_out = [heaviest, weight, "max_" + stat]
         self.notify_all_observers()
         self.stand_out = ["", 0, ""]
 
-    def get_avg_weight(self):
+    def get_avg(self, stat):
         avg = self.my_Calc.get_avg(self.pokedex, "weight")
-        self.stand_out = ["avg", avg, "avg_weight"]
-        self.notify_all_observers()
-        self.stand_out = ["", 0, ""]
-
-    def get_min_height(self):
-        shortest = self.my_Calc.get_min(self.pokedex, "height")
-        height = self.pokedex[shortest].get_height()
-        self.stand_out = [shortest, height, "min_height"]
-        self.notify_all_observers()
-        self.stand_out = ["", 0, ""]
-
-    def get_max_height(self):
-        tallest = self.my_Calc.get_max(self.pokedex, "height")
-        height = self.pokedex[tallest].get_height()
-        self.stand_out = [tallest, height, "max_height"]
-        self.notify_all_observers()
-        self.stand_out = ["", 0, ""]
-
-    def get_avg_height(self):
-        avg = self.my_Calc.get_avg(self.pokedex, "height")
-        self.stand_out = ["avg", avg, "avg_height"]
+        self.stand_out = ["avg", avg, "avg_" + stat]
         self.notify_all_observers()
         self.stand_out = ["", 0, ""]
 
