@@ -2,6 +2,12 @@
 @author: Angus Whitehead
 """
 import Observer
+from AvgHeight import AvgHeight
+from AvgWeight import AvgWeight
+from MaxWeight import MaxWeight
+from MaxHeight import MaxHeight
+from MinWeight import MinWeight
+from MinHeight import MinHeight
 
 
 class StatsObserver(Observer.Observer):
