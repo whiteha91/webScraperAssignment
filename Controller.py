@@ -62,20 +62,20 @@ class Controller(Subject.Subject):
     def get_min(self, stat):
         lightest = self.my_Calc.get_min(self.pokedex, stat)
         weight = self.pokedex[lightest].get_weight()
-        self.stand_out = [lightest, weight, "min_" + stat]
+        self.stand_out = [lightest, weight, "Min" + stat]
         self.notify_all_observers()
         self.stand_out = ["", 0, ""]
 
     def get_max(self, stat):
-        heaviest = self.my_Calc.get_max(self.pokedex, "weight")
+        heaviest = self.my_Calc.get_max(self.pokedex, stat)
         weight = self.pokedex[heaviest].get_weight()
-        self.stand_out = [heaviest, weight, "max_" + stat]
+        self.stand_out = [heaviest, weight, "Max" + stat]
         self.notify_all_observers()
         self.stand_out = ["", 0, ""]
 
     def get_avg(self, stat):
-        avg = self.my_Calc.get_avg(self.pokedex, "weight")
-        self.stand_out = ["avg", avg, "avg_" + stat]
+        avg = self.my_Calc.get_avg(self.pokedex, stat)
+        self.stand_out = ["avg", avg, "Avg" + stat]
         self.notify_all_observers()
         self.stand_out = ["", 0, ""]
 
