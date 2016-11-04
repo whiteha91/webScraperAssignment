@@ -68,26 +68,47 @@ class Console (Cmd):
         except KeyError:
             print("Pokemon " + name + " doesn't exist in this generation")
 
-    def do_max(self, stat):
+    def do_max_weight(self):
         """
         this function displays the Pokemon with the largest stat requested
          eg min weight
         """
-        self.my_controller.get_max(self, stat.title())
+        self.my_controller.get_max(self, "Weight")
 
-    def do_min(self, stat):
+    def do_min_weight(self):
         """
         this function displays the pokemon with the smallest stat requested
         eg max weight
         """
-        self.my_controller.get_min(self, stat.title())
+        self.my_controller.get_min(self, "Weight")
 
-    def do_average(self, stat):
+    def do_average_weight(self):
         """
         this function displays the average stat requested of all pokemon stored
         eg average weight
         """
-        self.my_controller.get_avg(self, stat.title())
+        self.my_controller.get_avg(self, "Weight")
+
+    def do_max_height(self):
+        """
+        this function displays the Pokemon with the largest stat requested
+         eg min weight
+        """
+        self.my_controller.get_max(self, "Height")
+
+    def do_min_height(self):
+        """
+        this function displays the pokemon with the smallest stat requested
+        eg max weight
+        """
+        self.my_controller.get_min(self, "Height")
+
+    def do_average_height(self):
+        """
+        this function displays the average stat requested of all pokemon stored
+        eg average weight
+        """
+        self.my_controller.get_avg(self, "Height")
 
     def do_exit(self, line):
         """

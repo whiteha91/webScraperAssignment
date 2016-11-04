@@ -21,21 +21,5 @@ class StatsObserver(Observer.Observer):
             print("Height: " + str(species.get_height()) + "m")
             print("Weight: " + str(species.get_weight()) + "kg")
         elif stat[0] != "":
-            if stat[2] == "MinWeight":
-                print("the lightest pokemon you have got data on is " + stat[0]
-                      + " at only " + str(stat[1]) + "kg")
-            elif stat[2] == "MaxWeight":
-                print("the heaviest pokemon you have got data on is " + stat[0]
-                      + " at a whooping " + str(stat[1]) + "kg")
-            elif stat[2] == "AvgWeight":
-                print("the average weight of pokemon you have got data on is "
-                      + str(stat[1]) + "kg")
-            elif stat[2] == "MinHeight":
-                print("the shortest pokemon you have got data on is " + stat[0]
-                      + " at only " + str(stat[1]) + "m")
-            elif stat[2] == "MaxHeight":
-                print("the tallest pokemon you have got data on is " + stat[0]
-                      + " at a whooping " + str(stat[1]) + "m")
-            elif stat[2] == "AvgHeight":
-                print("the average height of pokemon you have got data on is "
-                      + str(stat[1]) + "m")
+            strat = eval(stat[2] + '()')
+            strat.show_results(stat)
