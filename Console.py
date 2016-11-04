@@ -84,7 +84,7 @@ class Console (Cmd):
 
     def do_average(self, stat):
         """
-        this function displays the average statrequested of all pokemon stored
+        this function displays the average stat requested of all pokemon stored
         eg average weight
         """
         self.my_controller.get_avg(stat)
