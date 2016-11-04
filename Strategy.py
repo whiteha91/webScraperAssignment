@@ -5,5 +5,5 @@
 
 class Strategy:
 
-    def show_results(self):
+    def show_results(self, stat):
         raise NotImplementedError

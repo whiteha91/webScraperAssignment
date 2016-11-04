@@ -27,7 +27,7 @@ class StatsObserver(Observer.Observer):
             elif stat[2] == "MaxWeight":
                 print("the heaviest pokemon you have got data on is " + stat[0]
                       + " at a whooping " + str(stat[1]) + "kg")
-            elif stat[2] == "avgWeight":
+            elif stat[2] == "AvgWeight":
                 print("the average weight of pokemon you have got data on is "
                       + str(stat[1]) + "kg")
             elif stat[2] == "MinHeight":
@@ -36,6 +36,6 @@ class StatsObserver(Observer.Observer):
             elif stat[2] == "MaxHeight":
                 print("the tallest pokemon you have got data on is " + stat[0]
                       + " at a whooping " + str(stat[1]) + "m")
-            elif stat[2] == "avgHeight":
+            elif stat[2] == "AvgHeight":
                 print("the average height of pokemon you have got data on is "
                       + str(stat[1]) + "m")
